@@ -45,20 +45,6 @@ YUMI_PICS = [
 ]
 
 
-
-EMOJIOS = [ 
-      "🌿",
-      "⚡",
-      "💗",
-      "😍",
-      "🥰",
-      "💫",
-      "✨",
-    
-]
-
-
-
 @app.on_message(filters.command(["start"]) & filters.private & ~BANNED_USERS)
 @LanguageStart
 async def start_pm(client, message: Message, _):
@@ -67,16 +53,12 @@ async def start_pm(client, message: Message, _):
         name = message.text.split(None, 1)[1]
         if name[0:4] == "help":
             keyboard = help_pannel(_)
-            accha = await m.reply_text(
-            text = random.choice(EMOJIOS),
+            accha = await message.reply_text(
+            text=random.choice(EMOJIOS),
             )
-            await asyncio.sleep(1)
-            await accha.edit("𝐒𝐭𝐚𝐫𝐭𝐢𝐧𝐠..")
-            await asyncio.sleep(0.1)
-            await accha.edit("𝐒𝐭𝐚𝐫𝐭𝐢𝐧𝐠...")
-            await asyncio.sleep(0.1)
-            await accha.edit("𝐒𝐭𝐚𝐫𝐭𝐢𝐧𝐠....")
-            await asyncio.sleep(0.1)
+            await asyncio.sleep(1.3)
+            await accha.edit("𝐒𝐭𝐚𝐫𝐭𝐢𝐧𝐠.")
+            await asyncio.sleep(0.2)
             await accha.edit("𝐒𝐭𝐚𝐫𝐭𝐞𝐝.✓")
             await asyncio.sleep(0.2)
             await accha.edit("𝐒𝐭𝐚𝐫𝐭")
@@ -138,22 +120,18 @@ async def start_pm(client, message: Message, _):
         served_users = len(await get_served_users())
         UP, CPU, RAM, DISK = await bot_sys_stats()
         accha = await m.reply_text(
-            text = random.choice(EMOJIOS),
-            )
-        await asyncio.sleep(1)
-        await accha.edit("𝐒𝐭𝐚𝐫𝐭𝐢𝐧𝐠..")
-        await asyncio.sleep(0.1)
-        await accha.edit("𝐒𝐭𝐚𝐫𝐭𝐢𝐧𝐠...")
-        await asyncio.sleep(0.1)
-        await accha.edit("𝐒𝐭𝐚𝐫𝐭𝐢𝐧𝐠....")
-        await asyncio.sleep(0.1)
-        await accha.edit("𝐒𝐭𝐚𝐫𝐭𝐞𝐝.✓")          
+        text=random.choice(EMOJIOS),
+        )
+        await asyncio.sleep(1.3)
+        await accha.edit("𝐒𝐭𝐚𝐫𝐭𝐢𝐧𝐠.")
+        await asyncio.sleep(0.2)
+        await accha.edit("𝐒𝐭𝐚𝐫𝐭𝐞𝐝.✓")
         await asyncio.sleep(0.2)
         await accha.edit("𝐒𝐭𝐚𝐫𝐭")
         await asyncio.sleep(0.2)
         await accha.delete()
         await message.reply_sticker("CAACAgUAAxkBAAIJnmWp7yxispwFOhwufAon5GJkMabMAAIlCwACpm9QVX8Bb2L6G_JtHgQ"),
-        await message.reply_photo(
+            await message.reply_photo(
             random.choice(YUMI_PICS),
             caption=_["start_2"].format(message.from_user.mention, app.mention, UP, DISK, CPU, RAM,served_users,served_chats),
             reply_markup=InlineKeyboardMarkup(out),
